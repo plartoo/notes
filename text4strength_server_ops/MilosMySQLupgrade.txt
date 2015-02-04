@@ -1,0 +1,424 @@
+    1  id
+    2  pwd
+    3  ls -alh
+    4  exit
+    5  ls
+    6  pwd
+    7  uname -u
+    8  uname -a
+    9  exit
+   10  rpm -q apache
+   11  rpm -q httpd
+   12  getenforce
+   13  sudo service httpd start
+   14  ps -eZ | grep httpd
+   15  sudo semanage port -l | grep -w http_port_t
+   16  semanage port -l | grep -w http_port_t
+   17  which semanage
+   18  yum provides /usr/sbin/semanage
+   19  sudo yum -y install policycoreutils-python
+   20  semanage
+   21  semanage port -l | grep -w http_port_t
+   22  telnet localhost 80
+   23  wget ftp://carroll.aset.psu.edu/pub/.mirrors/1/rh-mirror.redhat.com/redhat/linux/6.1/en/os/i386/RedHat/RPMS/telnet-0.10-31.i386.rpm
+   24  ls
+   25  pwd
+   26  ftp://carroll.aset.psu.edu/pub/.mirrors/1/rh-mirror.redhat.com/redhat/linux/6.1/en/os/i386/RedHat/RPMS/telnet-0.10-31.i386.rpm
+   27  wget ftp://ftp.pbone.net/mirror/archive.download.redhat.com/pub/redhat/linux/6.1/en/os/i386/RedHat/RPMS/telnet-0.10-31.i386.rpm
+   28  ls
+   29  rpm -qa | less
+   30  rpm -i telnet-0.10-31.i386.rpm 
+   31  setstatus
+   32  uname -a
+   33  cat /etc/redhat-release 
+   34  rpm -qf $(which sestatus)
+   35  yum provides *bin/sestatus
+   36  rpm -q policycoreutils
+   37  exit
+   38  service httpd status
+   39  ifconfig
+   40  rpm -q apache
+   41  yum install httpd
+   42  sudo yum install httpd
+   43  chkconfig --levels 235 httpd on
+   44  sudo chkconfig --levels 235 httpd on
+   45  cat /etc/httpd/conf/httpd.conf
+   46  vi /etc/httpd/conf/httpd.conf 
+   47  sudo vi /etc/httpd/conf/httpd.conf 
+   48  service httpd restart
+   49  sudo service httpd restart
+   50  ifconfig
+   51  curl localhost
+   52  ipconfig
+   53  ifconfig
+   54  telnet 172.16.156.141
+   55  yum install telnet
+   56  sudo yum install telnet
+   57  which telnet
+   58  telnet 172.16.156.141
+   59  telnet 172.16.156.141 80
+   60  sudo vi /etc/sysconfig/iptables
+   61  service iptables restart
+   62  sudo service iptables restart
+   63  sudo service httpd restart
+   64  telnet 172.16.156.141 80
+   65   t4s.urmc-sh.rochester.edu
+   66  exit
+   67  python -V
+   68  mysql
+   69  mysql --version
+   70  mysql start
+   71  sudo mysql start
+   72  mysqladmin -u root -p status
+   73  /etc/init.d/mysqld start
+   74  service mysqld start
+   75  ps ax | grep mysql
+   76  ls /usr/local/bin/
+   77  ls /usr/local/sbin
+   78  ls /usr/local/src
+   79  which mysql
+   80  /usr/bin/mysql start
+   81  /usr/bin/mysqld start
+   82  updatedb
+   83  locate mysql
+   84  yum list installed | grep mysql
+   85  which mysql
+   86  /usr/bin/mysql_config 
+   87  /usr/bin/mysql_config --socket
+   88  ls -al /var/lib/mysql/mysql.sock
+   89  rpm -q mysql-server
+   90  sudo yum install mysql-server
+   91  getenforce
+   92  service mysqld start
+   93  sudo service mysqld start
+   94  ps -eZ | grep mysqld
+   95  mysqladmin -u root -p version
+   96  sudo service mysqld stop
+   97  sudo service mysql51-mysqld stop
+   98  sudo service mysql51-mysqld start
+   99  sud service mysql51-mysqld start
+  100  sudo service mysql51-mysqld start
+  101  cd /etc/yum.repos.d/
+  102  ls
+  103  wget http://rpms.famillecollet.com/enterprise/remi.repo
+  104  sudo wget http://rpms.famillecollet.com/enterprise/remi.repo
+  105  ls
+  106  cd
+  107  rpm -q mysql mysql-server
+  108  rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm
+  109  sudo rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm
+  110  yum install mysql.`uname -i` yum-plugin-replace
+  111  sudo yum install mysql.`uname -i` yum-plugin-replace
+  112  sudo yum replace mysql --replace-with mysql55
+  113  mysqladmin -u root -p version
+  114  sudo service mysqld start
+  115  mysqladmin -u root -p version
+  116  mysql_upgrade -u root
+  117  sudo mysql_upgrade -u root
+  118  mysql -u root
+  119  mysql -u guest t4sdev
+  120  mysqladmin -u root reload
+  121  mysql -u guest t4sdev
+  122  mysql -u t4sdev t4sdev
+  123  mysql -u root mysql
+  124  mysql -u t4sdev t4sdev
+  125  mysql -u t4sdev -p RocPass1@
+  126  mysql -u t4sdev -p t4sdev
+  127  mysqladmin -u root password RocPass1@
+  128  mysql -u root -p
+  129  mysql -u root -p'RocPass1@' -e 'show databases;'
+  130  yum -q php
+  131  which php
+  132  ls
+  133  mkdir sysadmin
+  134  mv telnet-0.10-31.i386.rpm sysadmin/
+  135  ls
+  136  cd sysadmin/
+  137  ls
+  138  cd ..
+  139  cd sysadmin/
+  140  sudo wget http://people.redhat.com/bkabrda/scl_python27.repohttp://people.redhat.com/bkabrda/scl_python27.repo
+  141  ls
+  142  sudo wget http://people.redhat.com/bkabrda/scl_python27.repohttp://people.redhat.com/bkabrda/scl_python27.repo >> scl.repo
+  143  sudo wget http://people.redhat.com/bkabrda/scl_python27.repo >> scl.repo
+  144  ls
+  145  rm scl.repo
+  146  ls
+  147  sudo wget http://mirror.webtatic.com/yum/el6/latest.rpm
+  148  ls
+  149  cd ..
+  150  cd /var/www/html/
+  151  ls
+  152  vi ip.php
+  153  sudo vi ip.php
+  154  ls -l
+  155  sudo chmod o+x ip.php 
+  156  ls
+  157  ls -l
+  158  sudo chmod o-x ip.php 
+  159  ls -l
+  160  sudo chmod u+x ip.php 
+  161  ls -l
+  162  ls
+  163  pwd
+  164  cd 
+  165  sudo wget http://sourceforge.net/projects/mywebsql/files/latest/download?source=files
+  166  ls
+  167  cp mywebsql-3.3.zip sysadmin/
+  168  ls
+  169  ls -l sysadmin/
+  170  mv mywebsql-3.3.zip /var/www/html/
+  171  ls
+  172  sudo mv mywebsql-3.3.zip /var/www/html/
+  173  ls
+  174  cd /var/www/html
+  175  ls
+  176  unzip mywebsql-3.3.zip 
+  177  ls
+  178  sudo unzip mywebsql-3.3.zip 
+  179  ls
+  180  cd mywebsql
+  181  ls
+  182  service mysqld
+  183  sudo service mysqld status
+  184  netstat -tln
+  185  grep port /etc/my.cnf
+  186  cat /etc/my.cnf
+  187  sudo service mysqld restart
+  188  netstat -tln
+  189  sudo vi /var/www/html/ip.php 
+  190  netstat -lnp | grep mysql
+  191  sudo netstat -lnp | grep mysql
+  192  cat /etc/my.cnf 
+  193  iptables -L
+  194  sudo iptables -L
+  195  cat /etc/hosts.allow 
+  196  ls
+  197  cat config/auth.php 
+  198  cat config/auth.php  | grep AUTHO_SERVER
+  199  cat config/auth.php | grep AUTHO_SERVER
+  200  cat config/auth.php | grep AUTH
+  201  cd config/
+  202  ls
+  203  cp auth.php ../auth.php.bk
+  204  sudo cp auth.php ../auth.php.bk
+  205  ls
+  206  cd ..
+  207  ls
+  208  mv auth.php.bk config/
+  209  sudo mv auth.php.bk config/
+  210  sudo yum install mod_ssl
+  211  cat /etc/httpd/conf.d/ssl.conf 
+  212  cat /etc/httpd/conf.d/ssl.conf | grep SSL Virtual
+  213  cat /etc/httpd/conf.d/ssl.conf | grep SSL
+  214  sudo vi /etc/httpd/conf.d/ssl.conf | grep SSL
+  215  sudo vi /etc/httpd/conf.d/ssl.conf
+  216  ipconfig
+  217  ifconfig
+  218  sudo netstat -nap | grep mysql
+  219  cat /etc/sysconfig/iptables
+  220  sudo cat /etc/sysconfig/iptables
+  221  yum -q mysql
+  222  rpm -q mysql
+  223  sudo service mysqld status
+  224  rpm -q mysql
+  225  rpm -q mysql-server
+  226  rpm -q mysqld
+  227  which mysql
+  228  ps -eZ | grep mysqld
+  229  mysqladmin -u root -p version
+  230  yum install mysql
+  231  sudo yum install mysql
+  232  mysqladmin -u root -p version
+  233  ls
+  234  which mysql
+  235  locate mysql
+  236  ls
+  237  cd config/
+  238  ls
+  239  cat auth.php
+  240  cd ..
+  241  ls
+  242  sudo vi ip.php 
+  243  cp ip.php phpinfo.php
+  244  sudo cp ip.php phpinfo.php
+  245  ls
+  246  sudo vi phpinfo.php 
+  247  sudo vi ip.php 
+  248  yum list php-mysql
+  249  sudo vi ip.php 
+  250  cat /etc/redhat-release 
+  251  ls
+  252  mv ip.php test_mysql.php
+  253  sudo mv ip.php test_mysql.php
+  254  ls
+  255  chkconfig --levels 235 httpd on
+  256  sudo chkconfig --levels 235 httpd on
+  257  sudo chkconfig --levels 235 mysqld on
+  258  /etc/init.d/httpd status
+  259  sudo /etc/init.d/httpd restart
+  260  /etc/init.d/httpd status
+  261  /etc/init.d/mysqld status
+  262  sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+  263  yum --enablerepo=remi,remi-php55 install php php-common
+  264  sudo yum --enablerepo=remi,remi-php55 install php php-common
+  265  sudo yum --enablerepo=remi,remi-php55 install php-pecl-apc php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongo php-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
+  266  sudo service httpd restart
+  267  sudo chkconfig --levels 235 httpd on
+  268  exit
+  269  which mysql
+  270  locate mysql
+  271  rpm -qa | grep apache
+  272  rpm -qa
+  273  rpm -qa | grep python
+  274  python
+  275  rpm -q apache
+  276  cat /etc/redhat-release 
+  277  updatedb
+  278  sudo updatedb
+  279  locate mysql
+  280  yum list installed | grep -i mysql
+  281  yum list installed | grep -i django
+  282  which django
+  283  python -V
+  284  python
+  285  sudo sudo -v
+  286  sudo sudo -V
+  287  sudo sh -c 'wget -qO- http://people.redhat.com/bkabrda/scl_python27.repo >> /etc/yum.repos.d/scl.repo'
+  288  sudo yum install python27
+  289  python -V
+  290  scl -l
+  291  scl enable python27 bash
+  292  exit
+  293  ls
+  294  sudo sudo -v
+  295  sudo sudo -V
+  296  sudo -s
+  297  sudo -i
+  298  exit
+  299  python
+  300  python send_sms.py 
+  301  sudo -i
+  302  sudo pip install twilio
+  303  sudo -i
+  304  ls
+  305  vi send_sms.py 
+  306  sudo -i
+  307  vi send_sms.py 
+  308  python send_sms.py 
+  309  pip install twilio --user
+  310  sudo pip install twilio --user
+  311  sudo -i
+  312  ls -l /usr/lib/python2.6/site-packages/twilio/rest/__init__.py
+  313  sudo -i
+  314  pip install twilio --user
+  315  ls
+  316  python send_sms.py 
+  317  pip install twilio --user
+  318  python
+  319  pip install twilio --user
+  320  exit
+  321  ls
+  322  sudo -i
+  323  pwd
+  324  ls
+  325  pwd
+  326  mkdir test
+  327  cd test
+  328  vi send_sms.py
+  329  ls
+  330  python send_sms.py 
+  331  python
+  332  sudo pip install twilio
+  333  python send_sms.py 
+  334  scl enable python27 bash
+  335  exit
+  336  ls
+  337  rpm -qa | grep MySQL 
+  338  python -V
+  339  scl enable python27 bash
+  340  exit
+  341  python
+  342  cd test/
+  343  vi send_sms.py 
+  344  python send_sms.py 
+  345  python
+  346  sudo -i
+  347  exit
+  348  ls
+  349  python -V
+  350  python
+  351  pip install twilio
+  352  python 
+  353  pip install twilio
+  354  pip -V
+  355  which pip
+  356  rpm -qf /usr/bin/pip
+  357  python -V
+  358  yum search */bin/pip
+  359  exit
+  360  service mysqld start
+  361  curl http://t4s.urmc-sh.rochester.edu
+  362  yum update
+  363  sudo -i
+  364  python
+  365  find / -type f -iname "twilio"
+  366  sudo -i
+  367  ls
+  368  pip uninstall twilio
+  369  ls
+  370  python
+  371  ls
+  372  cd test
+  373  ls
+  374  python send_sms.py 
+  375  python
+  376  sudo -i
+  377  python send_sms.py 
+  378  python
+  379  ls /usr/lib/python2.6/site-packages/twilio/
+  380  ls -lh /usr/lib/python2.6/site-packages/twilio/
+  381  scl enable python27 bash
+  382  ls
+  383  cd test
+  384  python send_sms.py 
+  385  exit
+  386  sudo -i
+  387  python -V
+  388  scl enable python27 bash
+  389  exit
+  390  ls
+  391  cd test
+  392  ls
+  393  cd ..
+  394  mkdir dev
+  395  cd dev
+  396  ls
+  397  django-admin.py startproject t4s
+  398  ls
+  399  cd t4s
+  400  ls
+  401  python
+  402  python -c "import django; print(django.get_version())"
+  403  ls -al
+  404  tree -d .
+  405  yum search tree
+  406  yum install tree
+  407  sudo yum install tree
+  408  tree -d .
+  409  tree .
+  410  pwd
+  411  python manage.py runserver
+  412  mysql -u root -p
+  413  mysql -u t4sdev -p
+  414  mysql -u root -p
+  415  mysql -u t4sdev -p
+  416  mysql.exe -s -N -h hostname -P 3306 -D databasename -u username -ppassword
+  417  mysql -u t4sdev -p
+  418  ls
+  419  python manage.py syncdb
+  420  python
+  421  sudo pip install mysql-python
+  422  sudo pip install mysqldb-python
+  423  history
+  424  history > commands_used_with_milos.txt

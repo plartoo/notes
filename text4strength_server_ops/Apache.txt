@@ -1,0 +1,5 @@
+# Check version
+/usr/sbin/httpd -V
+
+# check Apache modules installed
+/usr/sbin/httpd -M

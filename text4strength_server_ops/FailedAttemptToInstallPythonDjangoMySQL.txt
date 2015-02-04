@@ -1,0 +1,202 @@
+﻿Installing Python27, MySQL SERVER and Django on RedHat
+======================================================
+1. Python 
+Follow instructions on this URL (pasted at the bottom):
+http://developerblog.redhat.com/2013/02/14/setting-up-django-and-python-2-7-on-red-hat-enterprise-6-the-easy-way/
+
+sudo sh -c 'wget -qO- http://people.redhat.com/bkabrda/scl_python27.repo >> /etc/yum.repos.d/scl.repo'
+scl -l
+python27
+[me@localhost ~]$ scl enable python27 bash
+[me@localhost ~]$ python -V
+Python 2.7.3
+
+
+2. MySQL 
+a) check if MySQL server is installed
+https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Confined_Services/chap-Managing_Confined_Services-MySQL.html
+rpm -q mysql-server
+
+If not installed, do this:
+~]# yum install mysql-server
+Then,
+~]# sudo service mysqld start
+Then, check if mysql related processes are running by:
+~]$ ps -eZ | grep mysqld
+
+Confirm the version of mysql server by:
+$ mysqladmin -u root -p version
+
+
+b) Upgrade to MySQL 5.5
+https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/5/html/Deployment_Guide/ch-Migrating_from_MySQL_5.0_to_MySQL_5.5.html#ex-in-place_upgrade
+The above link tells me to upgrade to MySQL 5.1 first before upgrading to 5.5, but following their
+inplace upgrade (Example 24.2. In-place Upgrade) instructions doesn't work well at
+[pthiha@t4s ~]$ sudo service mysql51-mysqld start
+[sudo] password for pthiha:
+mysql51-mysqld: unrecognized service
+
+So, I followed this blog by Webtatic (copy and pasted entirely for reference) to get it done:
+http://www.webtatic.com/packages/mysql55/
+[NOTE: another even better resource is:
+http://www.if-not-true-then-false.com/2010/install-apache-php-on-fedora-centos-red-hat-rhel/]
+
+I also downloaded the rpm package mentioned in the blog post above to "SysAdmin" folder.
+Essentially, the commands used were:
+$ rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm
+$ yum install mysql.`uname -i` yum-plugin-replace
+$ yum replace mysql --replace-with mysql55
+$ service mysqld start
+# This will issue a password prompt for the user. If you don't have a root user password, remove the "-p"
+$ sudo mysql_upgrade -u root -p
+
+
+NOTE: There is also another StackOverflow post that might actually be useful:
+http://stackoverflow.com/questions/9361720/update-mysql-version-from-5-1-to-5-5-in-centos-6-2
+And another one for CentOS:
+http://blog.iphoting.com/blog/2012/06/19/upgrading-to-mysql-5-dot-5-on-centos-6/
+
+Optional: check if MySQL client is installed (irrelavant)
+http://stackoverflow.com/questions/5974403/how-to-find-whether-mysql-is-installed-in-red-hat
+rpm -qa | grep MySQL 
+OR
+/usr/bin/mysql_config --version
+
+(Restarting and stopping MySQL on RedHat)
+http://theos.in/desktop-linux/tip-that-matters/how-do-i-restart-mysql-server/
+
+$ /etc/init.d/mysqld start
+$ /etc/init.d/mysqld stop
+$ /etc/init.d/mysqld restart
+OR
+# service mysqld start
+# service mysqld stop
+# service mysqld restart
+
+
+3. Django install 
+http://developerblog.redhat.com/2013/02/14/setting-up-django-and-python-2-7-on-red-hat-enterprise-6-the-easy-way/comment-page-1/#comment-3787
+
+sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH easy_install pip
+
+(Ran into error. Solved by following: http://stackoverflow.com/questions/20905350/latest-pip-fails-with-requires-setuptools-0-8-for-dist-info)
+sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH pip install setuptools --no-use-wheel --upgrade
+
+(Cont. with Django install)
+sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH pip install django
+
+sudo yum install gcc mysql-devel
+
+
+***********************************************************************************************************************
+[REF: http://developerblog.redhat.com/2013/02/14/setting-up-django-and-python-2-7-on-red-hat-enterprise-6-the-easy-way/]
+Setting up Django and Python 2.7 on Red Hat Enterprise 6 the easy way
+Posted on February 14, 2013 by Langdon White
+      5 Votes
+
+Recently, I needed to get Django installed with Python 2.7 on Red Hat Enterprise Linux 6. As this is not a directly supported activity, I wanted to document how I went about it. As you might imagine, the generally expected method for install would be to grab the Python 2.7 source tree and then build it. Obviously, that can be a lot of work; is not particularly repeatable; and, potentially, exposes you to more security flaws. As a result, I decided to try to leverage a “new’ish” technology developed (in the open) by Red Hat called Software Collections. An in depth discussion of Software Collections is for another post, for now we just need to know that Software Collections are rpms that contain all (or most) of their supporting libraries, install under /opt, are updatable through yum, and, the core software collections code (scl-utils) is supported by Red Hat. A number of collections have been created and released by the community at http://bit.ly/fedora-scl.
+
+OK, getting started. I created a new VM using a RHEL 6.3 image on an instance of RHOS (Red Hat Open Stack), which is still in preview status (and available to anyone who signs up here) but works well to try this out. First weirdness I ran into was that there was a sudoers file (/etc/sudoers) but sudo (the binary) wasn’t actually installed. So:
+
+su
+yum install sudo
+exit
+
+and, back in action. Now we can add a repo for the Python 2.7 scl (short for “Software Collection”) by creating/editing a file in /etc/yum.repos.d. For the software collections, I prefer having one file, scl.repo, and adding all the repos I use to it (YMMV).
+
+sudo vi /etc/yum.repos.d/scl.repo
+c/p from http://people.redhat.com/bkabrda/scl_python27.repo (or follow the link from the Fedora SCL page) into the file
+:wq
+
+If you want to be all slick and one-liney…
+
+sudo sh -c 'wget -qO- http://people.redhat.com/bkabrda/scl_python27.repo >> /etc/yum.repos.d/scl.repo'
+
+I don’t want to actually include the repo file here as it may change over time. You could also just wget the file and put that in repos.d but I like having all the scl info in one place and so I create one repo file with all the repos in it.
+
+Now we install very easily using:
+
+sudo yum install python27
+
+then we get:
+
+scl -l
+python27
+[me@localhost ~]$ scl enable python27 bash
+[me@localhost ~]$ python -V
+Python 2.7.3
+
+Now, even though there is a software collection for mysql 5.5, Django works with any version of mysql after 5.0.3. As a result, we are going to stick with the one in RHEL 6 default.
+
+sudo yum install mysql-server mysql
+
+OK.. looks like everything should be installed correctly, now we can install Django
+To install Django I want to use pip as that is what the Django folks recommend. You may need to pass the LD_LIBRARY_PATH to sudo because, depending on your configuration, sudo may be configured to strip any LD paths out of your sudo environment by default.
+
+Easy way to check for this is to:
+
+sudo sudo -V (as root, run sudo, with “version” as an option)
+
+If you see “LD_*” or something similar under “Environment variables to remove” then you know you need to pass it. The error you will get is basically python being unable to find its linked libraries. You could also avoid all of this by backing up a bit, su’ing as root directly, and then running scl enable as root.
+
+sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH easy_install pip
+sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH pip install django
+
+Django also requires a library called MySQLdb which is available as an rpm on RHEL 6. However, the normal installation method of this library is not sufficient for our needs. As a result, we need to install using pip. However, this is a binary install and requires not only gcc but also the mysql header files to build. The next two lines should get it installed for you.
+
+sudo yum install gcc mysql-devel
+sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH pip install MySQL-python
+
+Now you are ready to proceed with Django. We won’t be covering how to use or run Django in this post as it is not really any different than it would be normally. You can find a number of docs that cover this subject. However, be sure that you have “scl enabled” python 2.7 before running any of these operations.
+For example:
+
+scl enable python27 bash
+django-admin.py startproject mytest_django
+(modify settings.py to point at your database, enable admin, etc)
+python manage.py runserver {insert your IP here}:8000
+
+In a future post, we will cover running Django with Apache’s httpd.
+
+
+==============
+[REF: http://www.webtatic.com/packages/mysql55/]
+MySQL 5.5 on CentOS/RHEL 6.4 and 5.9 via Yum
+
+
+Redhat Enterprise Linux (RHEL) 5.x and CentOS 5.x have been providing MySQL 5.0 in it’s distribution since that was the active stable branch when RHEL 5.0 was released on 14th March 2007 (CentOS 5.0 on 12th April 2007). Since then, Sun/Oracle have released MySQL 5.1 and MySQL 5.5, so the Webtatic Yum repository has added them to it’s web stack, which now provides updated versions of all the AMP in LAMP.
+
+Update 2013-05-11 – Updated guide to include Webtatic EL6 mysql55 installation and simplfied package upgrade
+
+First, to set up the yum repository, install the webtatic-release RPM based on your CentOS/RHEL release:
+
+Webtatic EL6 for CentOS/RHEL 6.x
+
+rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm
+Webtatic EL5.1 for CentOS/RHEL 5.x:
+
+rpm -Uvh http://mirror.webtatic.com/yum/el5/latest.rpm
+If you already have MySql client or server installed (rpm -q mysql mysql-server), then you can upgrade using the following method:
+
+yum install mysql.`uname -i` yum-plugin-replace
+yum replace mysql --replace-with mysql55
+“yum install mysql” is only there to make sure yum-plugin-replace can resolve dependencies correctly if only mysql-server was installed.
+
+Otherwise, to install MySql client and server, then run:
+
+yum install mysql55 mysql55-server
+You should upgrade existing tables before setting the server to become a production machine, which can be done by starting the server and running the mysql_upgrade script (this may take time depending on the size of the database).
+
+service mysqld start
+ 
+# This will issue a password prompt for the user. If you don't have a root user password, remove the "-p"
+mysql_upgrade -u root -p
+MySQL 5.1
+
+The Webtatic 5 repository for CentOS/RHEL 5.x includes mysql51-* packages for installing MySQL 5.1. This can be installed by replacing in the above commands “mysql55″ with “mysql51″.
+
+As MySQL 5.1 is standard in CentOS/RHEL 6.x, it is not included in the Webtatic EL 6 repository.
+
+
+==============
+Other possibly useful link:
+Install Apache 2.2.15, MySQL 5.5.34 & PHP 5.5.4 on RHEL/CentOS 6.4/5.9 & Fedora 19-12 <http://www.tecmint.com/install-apache-mysql-php-on-redhat-centos-fedora/>

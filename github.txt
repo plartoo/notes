@@ -1,0 +1,75 @@
+** Read http://git-scm.com/doc or free PDF downloaded in my "Read" folder. A great resource to learn Git.
+Github related Git commands (Tested on Windows)
+===========================
+To add existing project to Github [https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/]
+Go to the project directory that I want to commit and do the usual
+> git init
+> git add .
+> git commit -m "blah blah blah"
+
+If I don't want to be tracked/indexed by Google, one StackOverflow says [http://stackoverflow.com/questions/15844905/how-to-stop-google-indexing-my-github-repository]
+commit to a branch name that is different from "master" ("main" is a good alternative name)
+> git checkout -b main
+> git push -u origin main
+
+Run Git Bash and follow [https://help.github.com/articles/generating-ssh-keys/]
+
+1. Check for SSH keys
+$ ls -al ~/.ssh
+Should see something like "id_rsa.pub" file
+
+2. Generate new SSH key
+$ ssh-keygen -t rsa -C "xxxxx@example.com"
+Enter password here
+
+3. Then start ssh-agent by either
+$ ssh-agent -s
+or 
+$ eval `ssh-agent -s` [http://stackoverflow.com/questions/17846529/could-not-open-a-connection-to-your-authentication-agent]
+
+4. Then type in roc pass one and two change to add the key to the ssh-agent
+$ ssh-add ~/.ssh/id_rsa
+might run into error that reads "Could not open a connection to your authentication agent". If so, try eval `ssh-agent -s` in step #3 above.
+
+5. Copy the key to clipboard by typing
+$ clip < ~/.ssh/id_rsa.pub
+and add it in the Github profile's SSH key list.
+
+ERRORS that I ran into:
+1. fatal: could not read Username for 'https://github.com': No such file or directory
+Then check to make sure remote origin is set correctly:
+> git remote -v
+Make sure to change the git global user.name (just in case, not necessary)
+> git config --global user.name "pppp"
+Also, make sure to check if the SSH access is working properly (see Miscellaneous #1 below).
+Then, try again,
+> git push origin main (I'm pushing main branch instead of master to now allow 
+
+2. fatal: repository 'https://github.com/plartoo/test.git/' not found
+Check remote repos
+> git remote -v
+and check in detail of what's going on behind the scene by
+> git remote show origin
+If something seems funky, use nuclear option by clearing out origin
+> remote rm origin
+then add again (I usually have more success by using SSH port on Windows, so)
+> git remote add origin git@github.com:plartoo/test.git
+
+6. Finally, push 
+> git push -u origin main
+
+====
+Miscellaneous notes:
+1. Test if SSH access is working properly
+$ ssh -T git@github.com
+
+Quick steps to add project directory to git repo (assuming ssh stuff are taken care of--see above)
+1. cd [directory]
+2. git init
+3. git add .
+4. git commit -m "abcd..."
+5. git checkout -b main
+6. Go to Github and create a repo. Copy its SSH url and do this
+7. git remote add origin git@github.com:account_name/xxxxxxx.git
+8. git push -u origin main
+9. (Optional) Make changes in the code, commit and then do #8 to commit and see if things work properly

@@ -1,0 +1,28 @@
+Zip
+===
+zip -r <output_name> <dir>
+
+Unpack tar.gz
+=============
+tar -xzf <source>.tar.gz
+
+Unpack .gz
+==========
+gunzip <source.gz>
+
+ssh with cipher
+===============
+ssh -caes128-ctr hostname.host.com
+
+scp from directory to local folder
+===================================
+scp -caes128-ctr -r pthiha@roc.cs.rochester.edu:/var/www/webroot/videoWiz .
+
+find command
+===============
+find . -name song*
+find . -type f -mtime -7
+
+disk usage (sort by size)
+===========
+du -sk * | sort -nr | head -10

@@ -1,0 +1,70 @@
+Screen
+=======
+To start a screen session    : screen -S [screen-name] eg : screen -S vhi
+To create a new window       : CTRL-a c
+To list the current sessions : CTRL-a "
+To rename a session          : CTRL-a A
+To toggle between sessions   : CTRL-a # of session
+To list the screens that
+currently exist              : screen -ls
+To attach and detach screens : screen -d -r [screen-name]
+Note : You need to run this when you attach to a screen session remotely.
+To stop terminal             : CTRL-s
+To resume terminal           : CTRL-q
+To split the screen horizontally : CTRL-a S
+To jump between split screens : CTRL-a 
+To close a split screen : Ctrl-a X
+To clear the screen : CTRL-a C
+
+To add some character to your screen session, add this to your ~/.screenrc :
+
+#
+# look and feel for the bottom two lines.
+#
+caption     always        "%{+b rk}%H%{gk} |%c %{yk}%d.%m.%Y | %72=Load: %l %{wk}"
+hardstatus alwayslastline "%?%{yk}%-Lw%?%{wb}%n*%f %t%?(%u)%?%?%{yk}%+Lw%?"
+#
+#
+
+hostname
+========
+Debian/Ubuntu Linux
+
+Debian based systems use the file /etc/hostname to read the hostname of the system at boot time and set it up using the init script /etc/init.d/hostname.sh.
+
+- Edit /etc/hostname and update to your new hostname, you can then run /etc/init.d/hostname.sh to activiate the change.
+- Update your /etc/hosts file to refelect new hostname
+
+You can also use sysctl to change the hostname:
+
+- sysctl kernel.hostname (To read the current hostname)
+- sysctl kernel.hostname=NEW_HOSTNAME (to change it)
+
+To change in gui in Ubuntu you can click to:
+
+- System > Administration > Networking > General tab > Host name field
+
+
+Install Pythong modules locally
+=================================
+http://www.harshj.com/2009/05/21/install-python-packages-locally/
+mkdir -p ~/.local/lib/python2.6/site-packages
+
+Now place the module or package folder under this directory, or link to it for achieving the same installation effect as you would with a global site-packages directory. For example, for my django copy from svn I’d do:
+ln -s ~/.django-svn/django-trunk/django ~/.local/lib/python2.6/site-packages/django
+
+Running the Python interpreter (in the same user account) will show this working:
+Python 2.6.2 (release26-maint, Apr 19 2009, 01:56:41)
+[GCC 4.3.3] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import django
+>>>
+
+So there you have it, when you want a package just for your user account while developing just put it under the local site-packages directory. Python automatically adds this to its path (PYTHONPATH).
+
+Find Linux distro and version
+==============================
+$ cat /etc/*-release
+$ lsb_release -a
+
+

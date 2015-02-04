@@ -1,0 +1,14 @@
+To upgrade and install PHP
+==========================
+
+http://www.if-not-true-then-false.com/2010/install-apache-php-on-fedora-centos-red-hat-rhel/
+
+rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+
+sudo yum --enablerepo=remi,remi-php55 install php php-common
+
+yum --enablerepo=remi,remi-php55 install php-pecl-apc php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongo php-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
+
+
+sudo service httpd restart
+sudo chkconfig --levels 235 httpd on

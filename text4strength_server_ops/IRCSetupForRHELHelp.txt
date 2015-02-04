@@ -1,0 +1,37 @@
+List of best IRCs on Windows 7: http://www.makeuseof.com/tag/top-7-free-irc-clients-windows-7/
+
+Recommended one (only 30 days trial): http://www.mirc.com/
+Freenode Webchat: http://webchat.freenode.net/
+
+Or just use: https://webchat.freenode.net/?channels=%23redhat
+Channel: #rhel
+
+=========
+
+Steps to take:
+1. Register your IRC nick:
+/msg NickServ REGISTER password youremail@example.com
+Replace password with a secure, unguessable password that you keep secret.
+
+2. The email address that you select will not be given out by staff, and is 
+mainly used to allow us to help you recover the account in the event that you 
+forget your password. For this reason, you are required to use a real, 
+non-disposable, email address. Upon registering, you will receive an email 
+with a verification command that you will need to run to complete the registration 
+process. Failure to verify the account will cause it to be automatically dropped 
+after about 24 hours.
+
+3. To keep your email address private, rather than displaying it publicly, 
+mark it as hidden (which is done by default for new accounts):
+
+/msg NickServ SET HIDEMAIL ON
+
+4. Then identify to your primary account:
+
+/msg NickServ IDENTIFY plartoo askRedHat
+
+5. /join #rhel
+
+==========
+How to get the most out of IRC channels:
+https://workaround.org/getting-help-on-irc

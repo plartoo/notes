@@ -1,0 +1,3 @@
+Read MilosMySQLupgrade.txt to trace back what we did to set up MySQL and repos correctly
+$ yum install MySQL-python
+

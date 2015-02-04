@@ -1,0 +1,588 @@
+    1  cat /etc/sysconfig/network-scripts/ifcfg-eth0 
+    2  yum install samba
+    3  yum update
+    4  um install nscd
+    5  yum install nscd
+    6  yum
+    7  yum repolist all
+    8  yum | less
+    9  yum list
+   10  yum list | gep samba
+   11  yum list | grep samba
+   12  yum install oddjobd
+   13  yum install samba
+   14  yum repolist
+   15  subscription-manager register --autosubscribe
+   16  yum update
+   17  exit
+   18  ls
+   19  cat /etc/passwd
+   20  df -g
+   21  df -h
+   22  who -r
+   23  init 5
+   24  clear
+   25  who -r
+   26  clear
+   27  id
+   28  yum install samba
+   29  rpm -qa | grep sam
+   30  yum install samba-winbind
+   31  yum install nscd
+   32  rpm -qa | grep nscd
+   33  yum update
+   34  yum
+   35  clear
+   36  cat /etc/yum.conf
+   37  file
+   38  file /etc/yum.repos.d/
+   39  cd /etc/yum.repos.d/r
+   40  cd /etc/yum.repos.d
+   41  ;s
+   42  ls
+   43  clear
+   44  ls -l
+   45  file redhat.repo 
+   46  man yum
+   47  yum repolist
+   48  yum -v repolist
+   49  yum repolist all
+   50  yum --enablerepo="rhel-source"
+   51  man yum
+   52  yum --enablerepo=rhel-source
+   53  yum --enablerepo=rhel-source | less
+   54  yum repolist all
+   55  yum-confg-namager --enable rhel-source
+   56  yum-config-manager --enable rhel-source
+   57  yum repolist all
+   58  clear
+   59  yum install samba
+   60  ifconfig -a
+   61  dhclient start
+   62  dhclient
+   63  ifconfig -a
+   64  man dhclient
+   65  vi /etc/sysconfig/network-scripts/ifcfg-eth0 
+   66  network restart
+   67  service network restart
+   68  ifconfig -a
+   69  service network stop
+   70  ifconfig -a
+   71  cd /etc/sysconfig/network-scripts
+   72  ls
+   73  file ifcfg-eth0 
+   74  less ifcfg-eth0
+   75  service network start
+   76  ifconfig -a
+   77  cat /etc/resolv.conf 
+   78  ls
+   79  cat ifcfg-eth0 
+   80  cat /etc/sysconfig/network
+   81  vi /etc/sysconfig/network
+   82  service network restart
+   83  ifconfig -a
+   84  vi /etc/sysconfig/network
+   85  service network restart
+   86  ifconfig -a
+   87  lsmod | grep ipv6
+   88  ifconfig
+   89  vi /etc/sysconfig/network
+   90  vi /etc/sysctl.conf 
+   91  vi /etc/sysconfig/network
+   92  vi /etc/sysconfig/network-scripts/ifcfg-eth0 
+   93  chkconfig -level 345 ip6tables off
+   94  sysctl -p
+   95  ifconfig -a
+   96  service network restart
+   97  ifconfig -a
+   98  system-config-network-tui
+   99  ifconfig -a
+  100  ifconfig
+  101  host
+  102  host ctsbweb
+  103  vi /etc/sysconfig/network-scripts/ifcfg-eth0 
+  104  service network restart
+  105  ifconfig -a
+  106  vi /etc/sysconfig/network-scripts/ifcfg-eth0 
+  107  ifconfig -a
+  108  exit
+  109  ifconfig
+  110  ifconfig eth0 down
+  111  cd /etc/sysconfig/network-scripts/
+  112  ls
+  113  vi ifcfg-eth0 
+  114  cd /etc/sysconfig/net
+  115  cd /etc/sysconfig/network
+  116  vi /etc/sysconfig/network
+  117  service network stop
+  118  service network start
+  119  ifconfig -a
+  120  ifconfig 
+  121  ifconfig eth0 down
+  122  ifconfig eth0 172.16.156.141 netmask 255.255.252.0 broadcast 172.16.159.250
+  123  ifconfig
+  124  ifconfig up
+  125  ifconfig eth0 up
+  126  ifconfig -a
+  127  service network restart
+  128  ifconfig -a
+  129  vi /etc/resolv.conf 
+  130  vi /etc/sysconfig/network
+  131  exit
+  132  useradd -d /home/isdadmin -m -c "isdadmin" -s /bin/bash -g 500 -u 500 isdadmin
+  133  groupadd 
+  134  groupadd -g 500 isdadmin
+  135  useradd -d /home/isdadmin -m -c "isdadmin" -s /bin/bash -g 500 -u 500 isdadmin
+  136  passwd isdadmin
+  137  w
+  138  ps -ef | grep pts/0
+  139  sudo kill 4871
+  140  w
+  141  sudo kill -9 4871
+  142  w
+  143  exit
+  144  vi /etc/ssh/sshd_config 
+  145  service sshd restart
+  146  vi /etc/ssh/sshd_config 
+  147  service sshd restart
+  148  vi /etc/ssh/sshd_config 
+  149  service sshd restart
+  150  vi /etc/ssh/sshd_config 
+  151  service sshd restart
+  152  exit
+  153  cat /etc/sysconfig/network
+  154  cat /etc/sysconfig/network-scripts/ifcfg-eth0 
+  155  clear
+  156  cat /etc/sysconfig/network-scripts/ifcfg-eth0 
+  157  ping aitwiki
+  158  vi /etc/resolv.conf 
+  159  exit
+  160  history | grep ads
+  161  id
+  162  exit
+  163  vi /etc/ssh/sshd_config 
+  164  service sshd restart
+  165  vi /etc/ssh/sshd_config 
+  166  service sshd restart
+  167  vi /etc/ssh/sshd_config 
+  168  service sshd restart
+  169  vi /etc/ssh/sshd_config 
+  170  service sshd restart
+  171  su - pthiha
+  172  vi /etc/ssh/sshd_config 
+  173  service sshd restart
+  174  vi /etc/ssh/sshd_config 
+  175  service sshd restart
+  176  cat /etc/groups
+  177  cat /etc/group
+  178  df -h
+  179  id betaylor
+  180  df -h
+  181  iostat -En
+  182  fdisk -l
+  183  parted -l
+  184  echo "3.5*166"|bc
+  185  exit
+  186  last
+  187  id betaylor
+  188  id B33rZ0fd@World!
+  189  id pthiha
+  190  id betaylor | grep isdl_erecord_images_r
+  191  id betaylor | grep isdl_erecord_images_d
+  192  vi /etc/ssh/sshd_config 
+  193  exit
+  194  service sshd restart
+  195  vi /etc/ssh/sshd_config 
+  196  service sshd restart
+  197  vi /etc/ssh/sshd_config 
+  198  service sshd restart
+  199  vi /etc/ssh/sshd_config 
+  200  service sshd restart
+  201  w
+  202  last
+  203  exit
+  204  exit
+  205  sudo --help
+  206  sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH easy_install pip
+  207  sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH pip install django
+  208  sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH setuptools
+  209  sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH easy_install setuptools
+  210  sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH pip install django
+  211  sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH pip install setuptools --no-use-wheel --upgrade
+  212  sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH pip install django
+  213  sudo yum install gcc mysql-devel
+  214  yum remove mysql-libs
+  215  yum remove mysql-libs-5.1.71-1.el6.x86_64
+  216  cat /etc/redhat-release 
+  217  rpm -qa | grep -i mysql
+  218  yum list installed | grep -i mysql
+  219  exit
+  220  cp /etc/banner.text ~betaylor
+  221  cd ~betaylor
+  222  ls -l
+  223  df -g
+  224  df -h
+  225  pwd
+  226  grep banner /etc/ssh/sshd_config 
+  227  ls -l /etc/banner.text 
+  228  man rpm 
+  229  rpm -qa | grep -i mys
+  230  host delphi
+  231  exit
+  232  cat /etc/sysconfig/network-scripts/ifcfg-eth0
+  233  exit
+  234  python
+  235  wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
+  236  python
+  237  exit
+  238  pip install --upgrade setuptools
+  239  yum -q installed | grep pip
+  240  yum -q | grep pip
+  241  rpm -qa | grep pip
+  242  yum -a installed
+  243  yum list installed
+  244  yum list installed | grep pip
+  245  pip install twilio
+  246  ls
+  247  pwd
+  248  exit
+  249  sudo yum install gcc mysql-devel
+  250  yum list installed | grep -i mysql
+  251  yum remove mysql mysql-*
+  252  yum list installed | grep -i mysql
+  253  service mysqld status
+  254  service mysqld start
+  255  yum install mysql55
+  256  service mysqld status
+  257  service mysqld start
+  258  rpm --help
+  259  uname -a
+  260  service mysqld status
+  261  rpm -a
+  262  rpm -qa
+  263  rpm -qa | grep mysql
+  264  rpm -p
+  265  rpm -iqa | grep mysql
+  266  rpm -iqa
+  267  rpm -qa -i | grep mysql
+  268  cat /etc/yum.repos.d/
+  269  ls /etc/yum.repos.d/
+  270  rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+  271  yum --enablerepo=remi,remi-test install mysql mysql-server
+  272  rpm -qa -i | grep mysql
+  273  service mysqld status
+  274  ls /etc/yum.repos.d/
+  275  yum install mysql55
+  276  chkconfig mysql55 on
+  277  service mysqld start
+  278  pip install twilio
+  279  python -V
+  280  scl enable python27 bash
+  281  python -V
+  282  python
+  283  scl enable python27 bash
+  284  exit
+  285  ls
+  286  python 
+  287  exit
+  288  exit(0
+  289  exit
+  290  ls
+  291  cat install.log
+  292  mkdir test
+  293  cd test
+  294  ls
+  295  vi send_sms.py
+  296  python send_sms.py 
+  297  vi send_sms.py
+  298  python send_sms.py 
+  299  exit
+  300  python 
+  301  exit
+  302  pip uninstall twilio
+  303  exit
+  304  python
+  305  cd test/
+  306  python send_sms.py 
+  307  yum -qa | grep mysql
+  308  rpm -qa | grep sql
+  309  vi /etc/yum.repos.d/webtatic.repo 
+  310  yum clean all
+  311  yum makecache
+  312  yum list installed
+  313  yum list installed | grep webtatic
+  314  yum list installed | grep remi
+  315  exit
+  316  python -V
+  317  which pythonj
+  318  which python
+  319  exit
+  320  yum update
+  321  python -V
+  322  scl python27 bash
+  323  scl enable python27 bash
+  324  which python
+  325  ls /etc/yum.repos.d/
+  326  rpm -qa | grep -i django
+  327  rpm -qa | grep -i dja
+  328  rpm -qa --qf "%{NAME}-%{VENDOR}" | grep -i webtatic
+  329  rpm -qa --qf "%{NAME}-%{VENDOR}\n" | grep -i webtatic
+  330  rpm -qa mysql55-webtatic
+  331  rpm -qa mysql55-Webtatic
+  332  rpm -qi mysql55-Webtatic
+  333  rpm -qa | grep mysql55
+  334  rpm -qi mysql55
+  335  yum remove mysql55 libmysqlclient16 mysql55-libs
+  336  ls /etc/yum.repos.d/
+  337  rpm -qa --qf "%{NAME}-%{VENDOR}\n" | grep -i webtatic
+  338  yum remove webtatic-release
+  339  ls /etc/yum.repos.d/
+  340  cd /etc/yum.repos.d/
+  341  ls
+  342  rm webtatic.repo.rpmsave 
+  343  ls
+  344  yum install cronie-anacron contabs postfix sysstat
+  345  chkconfig sysstat
+  346  chkconfig sysstat on
+  347  yum repolist
+  348  ls
+  349  rpm -qa --qf "%{NAME}-%{VENDOR}\n" | grep -i remi
+  350  rpm -qa --qf "%{NAME}-%{VENDOR}\n" | grep -i epel
+  351  ls 
+  352  vi remi.repo
+  353  yum --enablerepo=remi search mysql
+  354  yum --disablerepo=\* --enablerepo=remi search mysql
+  355  yum --disablerepo=\* --enablerepo=remi install mysql-server
+  356  yum --disablerepo=\* --enablerepo=remi install perl-DBD-MySQL
+  357  yum --enablerepo=remi install mysql-server
+  358  service mysqld status
+  359  service mysqld start
+  360  chkconfig mysqld on
+  361  chkconfig --list | grep 3:on
+  362  who -r
+  363  vi /etc/inittab 
+  364  chkconfig cups off
+  365  chkconfig ip6tables off
+  366  cat /proc/mdstat 
+  367  chkconfig mdmonitor off
+  368  chkconfig qpidd off
+  369  chkconfig winbind off
+  370  chkconfig rpcgssd off
+  371  chkconfig rpcbind off
+  372  mysql_secure_installation 
+  373  mysql -u root 
+  374  mysql -u root -p 
+  375  history
+  376  rpm -qi httpd
+  377  yum install gcc mysql-devel
+  378  yum install gcc mysql55-devel
+  379  yum --disablerepo=\* --enablerepo=remi search mysql
+  380  yum --disablerepo=\* --enablerepo=remi info mysql
+  381  yum --disablerepo=\* --enablerepo=remi info mysql-devel
+  382  pwd
+  383  ls
+  384  vi redhat.repo 
+  385  yum install mysql-devel
+  386  yum --enablerepo=remi install mysql-devel
+  387  vi redhat.repo 
+  388  yum check-update
+  389  which django
+  390  cd
+  391  django-admin.py startproject test
+  392  django-admin.py startproject test1
+  393  ls
+  394  cd test1
+  395  ls
+  396  python
+  397  exit
+  398  clear
+  399  find / -type f -iname "twilio"
+  400  find / -type f -iname "*twilio*"
+  401  pip install twilio
+  402  find / -type f -iname "*twilio*"
+  403  python
+  404  ls -ld /usr/lib/python2.6/site-packages/twilio
+  405  ls -l /usr/lib/python2.6/site-packages/twilio
+  406  chmod o+x /usr/lib/python2.6/site-packages/twilio/*.py*
+  407  ls -l /usr/lib/python2.6/site-packages/twilio
+  408  ls
+  409  exit
+  410  chmod o-x /usr/lib/python2.6/site-packages/twilio/*.py*
+  411  exit
+  412  python27 -V
+  413  python -V
+  414  yum install python-pip
+  415  pip -V
+  416  file /usr/bin/pip
+  417  less /usr/bin/pip
+  418  python -V
+  419  python
+  420  exit
+  421  python -V
+  422  python
+  423  which easy_install
+  424  easy_install pip
+  425  python -V
+  426  python
+  427  pip install twilio
+  428  ls
+  429  cd test
+  430  ls
+  431  python send_sms.py 
+  432  exit
+  433  yum whatprovides */bin/pip
+  434  yum install yum-utils
+  435  ls -lh
+  436  yumdownloader python-pip
+  437  rpm -qlp python-pip-1.3.1-4.el6.noarch.rpm 
+  438  scl enable python27 bash
+  439  python -V
+  440  python
+  441  clear
+  442  python -V
+  443  easy_install -m pip
+  444  python
+  445  scl enable python27 bash
+  446  exit
+  447  curl http://127.0.0.1:8000
+  448  rpm -qi mod
+  449  rpm -qi mod_
+  450  rpm -qi mod_wsgi
+  451  ldd /etc/httpd/modules/mod_wsgi.so 
+  452  exit
+  453  vi /etc/httpd/conf/httpd.conf 
+  454  dig http://t4s.urmc-sh.rochester.edu/
+  455  dig t4s.urmc-sh.rochester.edu
+  456  dig -t CNAME t4s.rochester.edu
+  457  vi /etc/httpd/conf/httpd.conf 
+  458  apachectl -t
+  459  service httpd configtest
+  460  apachectl -M
+  461  getenforce
+  462  tail -f -n0 /var/log/httpd/*
+  463  vi /etc/httpd/conf/httpd.conf 
+  464  service httpd configtest
+  465  pwd
+  466  vi /etc/httpd/conf/httpd.conf 
+  467  service httpd configtest
+  468  service httpd restart
+  469  ls -lh /home/
+  470  ls -lh /home/URMC-SH/
+  471  ls -lh /home/URMC-SH/pthiha/
+  472  chmod 755 /home/URMC-SH/
+  473  ls -ldh /home/URMC-SH/
+  474  tail -f -n0 /var/log/httpd/*
+  475  service httpd configtest
+  476  tail -f -n0 /var/log/httpd/*
+  477  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  478  clear
+  479  chcon -R --reference=/var/www/html /home/URMC-SH/
+  480  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  481  python
+  482  pip install wsgi
+  483  ldd mod_wsgi.so
+  484  which django
+  485  python
+  486  pip install django
+  487  ls -dl /usr/lib64/python2.6/site-packages/django/
+  488  ls -lh  /usr/lib64/python2.6/site-packages/django/core/handlers/wsgi.py
+  489  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  490  vi /etc/httpd/conf/httpd.conf 
+  491  vi /etc/httpd/conf/httpd.conf
+  492  apachectl reload
+  493  service httpd reload
+  494  celar
+  495  clear
+  496  vi /etc/httpd/conf/httpd.conf 
+  497  service httpd restart
+  498  vi /etc/httpd/conf/httpd.conf 
+  499  service httpd restart
+  500  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  501  vi /etc/httpd/conf/httpd.conf 
+  502  python
+  503  vi /etc/httpd/conf/httpd.conf 
+  504  service httpd restart
+  505  vi /etc/httpd/conf/httpd.conf 
+  506  service httpd restart
+  507  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  508  vi /etc/httpd/conf/httpd.conf 
+  509  service httpd restart
+  510  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  511  python
+  512  vi /etc/httpd/conf/httpd.conf 
+  513  service httpd restart
+  514  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  515  vi /etc/httpd/conf/httpd.conf 
+  516  service httpd restart
+  517  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  518  cat /etc/httpd/conf.d/wsgi.conf 
+  519  ldd mod_wsgi.so
+  520  which ldd
+  521  history | grep ldd
+  522  ldd /etc/httpd/modules/mod_wsgi.so 
+  523  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  524  clear
+  525  ls
+  526  vi /etc/httpd/conf/httpd.conf 
+  527  vim /etc/httpd/conf/httpd.conf 
+  528  apachectl -t
+  529  service httpd restart
+  530  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  531  cd /home/URMC-SH/pthiha/dev/t4s/
+  532  ls -lh
+  533  cd t4s/
+  534  ls -lh
+  535  chmod u-x wsgi.py
+  536  ls -lh
+  537  vim wsgi.py
+  538  service httpd restart
+  539  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  540  python
+  541  vim /etc/httpd/conf/httpd.conf 
+  542  service httpd restart
+  543  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  544  pip install django
+  545  setenforce 0
+  546  service httpd restart
+  547  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  548  ls -lhZ /usr/lib64/python2.6/site-packages/django/
+  549  ls -lhZ /usr/lib64/python2.6/site-packages/
+  550  chcon -R --reference=/usr/lib64/python2.6/site-packages/zope /usr/lib64/python2.6/site-packages/django
+  551  chcon -R --reference=/usr/lib64/python2.6/site-packages/zope /usr/lib64/python2.6/site-packages/Django-1.6.1.dist-info/
+  552  setenforce 1
+  553  getenforce
+  554  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  555  clear
+  556  yum whatprovides */sealert
+  557  yum install setroubleshoot-server
+  558  ls -lh /var/log/audit/audit.log
+  559  sealert -a /var/log/audit/audit.log > /tmp/selinux-problems.txt
+  560  ls -lh /tmp/selinux-problems.txt 
+  561  vim /tmp/selinux-problems.txt 
+  562  sealert -a /var/log/audit/audit.log.1 > /tmp/selinux-problems1.txt
+  563  ls -lh /tmp/selinux-problems1.txt 
+  564  vim /tmp/selinux-problems1.txt 
+  565  ls -lh /var/log/audit/
+  566  file /var/log/audit/audit.log
+  567  vim /var/log/audit/audit.log
+  568  sealert -a /var/log/audit/audit.log > /tmp/selinux-problems.txt
+  569  ls -lh /tmp/
+  570  vim /tmp/selinux-problems.txt 
+  571  tail -f -n0 /var/log/{audit/audit.log,httpd/*}
+  572  tail -f -n0 /var/log/audit/audit.log &
+  573  service sshd restart
+  574  ls -lhZ /usr/sbin/sshd 
+  575  clear
+  576  aureport -a
+  577  clear
+  578  iptables -L -v -n
+  579  vim /etc/sysconfig/iptables
+  580  service iptables restart
+  581  fg
+  582  clear
+  583  vim /etc/sysconfig/iptables
+  584  service iptables restart
+  585  clear
+  586  exit
+  587  vi /etc/httpd/conf/httpd.conf 
+  588  history > configuring_mod_wsgi_with_Django.txt

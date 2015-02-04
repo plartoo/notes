@@ -1,0 +1,19 @@
+Bash prompt (original)
+=======================
+\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$
+export PS1="\[\e]0;\u@\h: \W\a\]${debian_chroot:+($debian_chroot)}\u@\h:\W\$"
+
+Export path permanently
+=======================
+in "~/.bashrc" (or "~/.bash_profile", if any), add a line like this, for example
+
+# add matlab dir to PATH
+PATH="$HOME/workspace/bin:$PATH"
+
+Add alias(es)
+==============
+in '~/.bashrc' or '~/.profile' or '~/.bash_aliases', add lines like this
+
+alias logincs='ssh pthiha@cycle1.cs.rochester.edu'
+alias logincsug='ssh pthiha@cycle1.csug.rochester.edu'
+

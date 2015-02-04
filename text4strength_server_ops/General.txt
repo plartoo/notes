@@ -1,0 +1,339 @@
+To start local server on Windows machine:
+C:\Program Files\MySQL\MySQL Server 5.6\bin>mysqld.exe
+
+C:\Users\lacheephyo\Documents\GitHub\t4sdev\t4s>python manage.py runserver
+
+Log in at <http://localhost:8000/> with researcher and 123
+
+=========
+On prevention server:
+opt/dev/t4sfeature/t4sdev ==> testing/staging
+opt/dev/t4sdev ==> production
+
+=========
+
+Do updates on local desktop (Phyo machine) on "develop" branch. Then make sure to do:
+C:\Users\lacheephyo\Documents\GitHub\t4sdev\t4s> git pull origin develop
+C:\Users\lacheephyo\Documents\GitHub\t4sdev\t4s>git status
+On branch develop
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working di
+
+        modified:   accounts/utils.py
+        modified:   organizations/forms.py
+        modified:   organizations/mixins.py
+        modified:   organizations/templates/organizations/list_stud
+        modified:   smsmessages/utils.py
+        modified:   smsmessages/views.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+Then follow feature branch flow to do commits as below:
+
+1. Open up Git shell (not windows cmd shell). There:
+
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [develop]> git flow feature start ca
+ncel_conversation_launch
+Switched to a new branch 'feature/cancel_conversation_launch'
+
+2. Summary of actions:
+- A new branch 'feature/cancel_conversation_launch' was created, based on 'devel
+op'
+- You are now on branch 'feature/cancel_conversation_launch'
+
+3. Now, start committing on your feature. For example:
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [feature/test_send_china +0 ~2 -0]>
+git add t4s/smsmessages/utils.py
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [feature/test_send_china +0 ~1 -0 |
++0 ~1 -0]> git commit -m "We will add '+' now regardless of destination country
+because this is a safer approach when it comes to dealing with international num
+bers (e.g., China)"
+[feature/test_send_china 2e8c0d7] We will add '+' now regardless of destination
+country because this is a safer approach when it comes to dealing with internati
+onal numbers (e.g., China)
+ 1 file changed, 4 insertions(+)
+
+
+4. When done, use:
+
+     git flow feature finish cancel_conversation_launch
+
+
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [develop]> git flow feature finish c
+ancel_conversation_launch
+Already on 'develop'
+Merge made by the 'recursive' strategy.
+ t4s/accounts/forms.py                              |   2 +-
+ t4s/campaigns/admin.py                             |   3 +-
+ t4s/campaigns/forms.py                             |  18 ++-
+ .../templates/campaigns/create_conversation.html   |   2 +-
+ t4s/campaigns/templates/campaigns/duplicate.html   |  22 ++++
+ create mode 100644 t4s/campaigns/templates/campaigns/edit_campaign.html
+ create mode 100644 t4s/smsmessages/migrations/0004_auto__del_field_messageoptio
+n_respond_freely.py
+Deleted branch feature/cancel_conversation_launch (was b3eca48).
+
+Summary of actions:
+- The feature branch 'feature/cancel_conversation_launch' was merged into 'devel
+op'
+- Feature branch 'feature/cancel_conversation_launch' has been removed
+- You are now on branch 'develop'
+
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [develop]> git status
+# On branch develop
+nothing to commit, working directory clean
+
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [develop]> git push origin develop
+Warning: Permanently added 'github.com,192.30.252.129' (RSA) to the list of know
+n hosts.
+Counting objects: 1, done.
+Writing objects: 100% (1/1), 252 bytes | 0 bytes/s, done.
+Total 1 (delta 0), reused 0 (delta 0)
+To git@github.com:text4strength/t4sdev.git
+   149f2e7..67868ef  develop -> develop
+
+5. After doing stuff in previous message in local machine, do this in t4sfeature on server.
+Make sure to log in as "pthiha" NOT as "root"
+
+[pthiha@t4s: t4s (develop)]$ pwd
+/opt/dev/t4sfeature/t4sdev/t4s
+
+[pthiha@t4s: t4s (feature/cancel_conversation_launch)]$ git checkout develop
+Switched to branch 'develop'
+
+[pthiha@t4s: t4s (develop)]$ git pull
+Enter passphrase for key '/home/URMC-SH/pthiha/.ssh/id_rsa':
+remote: Counting objects: 6, done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 6 (delta 1), reused 0 (delta 0)
+Unpacking objects: 100% (6/6), done.
+From github.com:text4strength/t4sdev
+   149f2e7..67868ef  develop    -> origin/develop
+Updating 149f2e7..67868ef
+Fast-forward
+ t4s/accounts/forms.py                              |    2 +-
+ t4s/campaigns/admin.py                             |    3 +-
+ t4s/campaigns/forms.py                             |   18 +++-
+ t4s/smsmessages/models.py                          |   12 +-
+ t4s/smsmessages/views.py                           |    4 +-
+ t4s/t4s/settings.py                                |    6 +-
+ 16 files changed, 270 insertions(+), 24 deletions(-)
+ create mode 100644 t4s/campaigns/templates/campaigns/duplicate.html
+ create mode 100644 t4s/campaigns/templates/campaigns/edit_campaign.html
+ create mode 100644 t4s/smsmessages/migrations/0004_auto__del_field_messageoption_respond_freely.py
+
+[pthiha@t4s: t4s (develop)]$ git status
+# On branch develop
+nothing to commit (working directory clean)
+
+[pthiha@t4s: t4s (develop)]$ git branch
+* develop
+  feature/cancel_conversation_launch
+  master
+
+6. The step below is only if there's a feature branch created on server. If not, skip this step.
+[pthiha@t4s: t4s (develop)]$ git branch -D feature/cancel_conversation_launch
+Deleted branch feature/cancel_conversation_launch (was 205f20b).
+========
+
+Once ready to test out on t4s.urmc-sh, sudo as "root" and
+[root@t4s t4s]# service httpd restart
+
+========
+
+If things don't seem to be working as expected on T4S server:
+[root@t4s ~]# tail -f /var/log/httpd/t4s.urmc-sh.rochester.edu-access_log
+
+Grab twilio URL something like this:
+http://localhost:8000/messages/receive/?ToCountry=US&ToState=NY&SmsMessageSid=SM7e383a5cb934498c5bf0dd138ffb1386&NumMedia=0&ToCity=ROCHESTER&FromZip=&SmsSid=SM7e383a5cb934498c5bf0dd138ffb1386&FromState=NY&SmsStatus=received&FromCity=&Body=Testing&FromCountry=US&To=%2B15854548833&ToZip=14609&MessageSid=SM7e383a5cb934498c5bf0dd138ffb1386&AccountSid=AC14415ab0be51ba4da097dd51da5a7d8f&From=%2B15856268095&ApiVersion=2010-04-01
+
+Then paste it in localhost:8000 and see what it gets using ipdb and etc.
+
+
+Also, you can check the DB content here
+https://t4s.urmc-sh.rochester.edu/mywebsql/
+and go to "smsmessages_messagerecord" last page to see if the message is failing or successful in sending.
+
+========
+Restart Cron:
+$ service crond restart
+
+
+
+
+
+Day 5
+Django South:
+http://south.readthedocs.org/en/latest/tutorial/part1.html
+To create migration file:
+C:\Users\lacheephyo\Documents\GitHub\t4sdev\t4s>python manage.py schemamigration accounts (or any app/model's name) --initial
+To create an entry in Migrations table:
+C:\Users\lacheephyo\Documents\GitHub\t4sdev\t4s>python manage.py migrate accounts  --fake
+
+To check the DB models. If something changed, it'll create a migration file in the model's folder:
+C:\Users\lacheephyo\Documents\GitHub\t4sdev\t4s>python manage.py schemamigration accounts --auto
+
+Then we finally do:
+python manage.py migrate <appname>
+
+Kapor's github trick:
+C:\Users\lacheephyo\Downloads\test>git remote set-url origin git@github.com:text4strength/test.git
+
+Gitflow:
+https://github.com/nvie/gitflow/wiki/Windows
+
+
+Day 7
+how to update and migrate using South
+
+Given you want to start from afresh (move code from local machine to server).
+[Drop DB if any old one is lingering around; Create new DB with utf8 as default charset]
+1. Do sync DB
+2. Create migration files using $ manage.py <app_name> schemamigration --initial
+???? check with Kapor to see what needs to be done here (something that ends with --auto)
+3. python manage.py migrate on server
+That's it.
+
+Other things I learned:
+python manage.py collectstatic 
+will collect all static files across all different apps in a project into a specific folder defined in proj/app/settings.py
+
+
+
+Django Migration
+
+C:\Users\lacheephyo\Documents\GitHub\t4sdev\t4s>python manage.py schemamigration
+ smsmessages --auto
+
+C:\Users\lacheephyo\Documents\GitHub\t4sdev\t4s>python manage.py migrate
+
+
+Git Branch management
+
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [master]> git status
+# On branch master
+nothing to commit, working directory clean
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [master]>
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [master]> git flow init
+
+Which branch should be used for bringing forth production releases?
+   - master
+Branch name for production releases: [master]
+Branch name for "next release" development: [develop]
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/]
+Release branches? [release/]
+Hotfix branches? [hotfix/]
+Support branches? [support/]
+Version tag prefix? []
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [develop]> git branch
+* develop
+  master
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [develop]> git flow feature start ho
+mepage
+Switched to a new branch 'feature/homepage'
+
+Summary of actions:
+- A new branch 'feature/homepage' was created, based on 'develop'
+- You are now on branch 'feature/homepage'
+
+Now, start committing on your feature. When done, use:
+
+     git flow feature finish homepage
+
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [feature/homepage]> git branch
+  develop
+* feature/homepage
+  master
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [feature/homepage]>
+C:\Users\lacheephyo> cd .\Documents\GitHub\t4sdev
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [feature/homepage]> git flow feature
+ finish homepage
+Switched to branch 'develop'
+Updating 4673b6a..5b179bc
+Fast-forward
+ t4s/accounts/constants.py                          |  4 +-
+ t4s/accounts/forms.py                              | 15 +++-
+ t4s/accounts/migrations/0001_initial.py            | 14 ++++
+ t4s/accounts/models.py                             | 11 ++-
+ t4s/accounts/templates/accounts/register.html      | 17 +++-
+ t4s/accounts/views.py                              | 14 +++-
+ t4s/campaigns/migrations/0001_initial.py           |  2 +
+ t4s/campaigns/templates/campaigns/create.html      | 25 ++----
+ t4s/campaigns/templates/campaigns/list.html        | 22 ++---
+ t4s/organizations/forms.py                         | 21 +++++
+ t4s/organizations/migrations/0001_initial.py       | 42 ++++++++++
+ t4s/organizations/models.py                        |  5 ++
+ .../templates/organizations/create_group.html      | 29 ++-----
+ .../templates/organizations/create_school.html     | 29 ++-----
+ .../templates/organizations/edit_group.html        | 21 +++++
+ .../templates/organizations/edit_school.html       | 21 +++++
+ .../templates/organizations/edit_student.html      | 38 +++++++++
+ .../templates/organizations/group_list.html        | 34 --------
+ .../templates/organizations/list_group.html        | 34 ++++++++
+ .../templates/organizations/list_school.html       | 33 ++++++++
+ .../templates/organizations/list_student.html      | 26 ++++++
+ .../templates/organizations/student_list.html      | 37 ---------
+ t4s/organizations/urls.py                          | 14 +++-
+ t4s/organizations/views.py                         | 94 ++++++++++++++++++++--
+ t4s/portals/__init__.py                            |  0
+ t4s/portals/admin.py                               |  3 +
+ t4s/portals/migrations/0001_initial.py             | 20 +++++
+ t4s/portals/migrations/__init__.py                 |  0
+ t4s/portals/models.py                              |  3 +
+ t4s/portals/templates/portals/home.html            |  8 ++
+ t4s/portals/tests.py                               |  3 +
+ t4s/portals/urls.py                                |  6 ++
+ t4s/portals/views.py                               |  3 +
+ t4s/smsmessages/models.py                          |  7 +-
+ t4s/t4s/settings.py                                |  3 +
+ t4s/t4s/urls.py                                    |  1 +
+ t4s/templates/foot.html                            |  1 -
+ t4s/templates/head.html                            | 58 ++++++++++++-
+ 38 files changed, 538 insertions(+), 180 deletions(-)
+ create mode 100644 t4s/organizations/templates/organizations/edit_group.html
+ create mode 100644 t4s/organizations/templates/organizations/edit_school.html
+ create mode 100644 t4s/organizations/templates/organizations/edit_student.html
+ delete mode 100644 t4s/organizations/templates/organizations/group_list.html
+ create mode 100644 t4s/organizations/templates/organizations/list_group.html
+ create mode 100644 t4s/organizations/templates/organizations/list_school.html
+ create mode 100644 t4s/organizations/templates/organizations/list_student.html
+ delete mode 100644 t4s/organizations/templates/organizations/student_list.html
+ create mode 100644 t4s/portals/__init__.py
+ create mode 100644 t4s/portals/admin.py
+ create mode 100644 t4s/portals/migrations/0001_initial.py
+ create mode 100644 t4s/portals/migrations/__init__.py
+ create mode 100644 t4s/portals/models.py
+ create mode 100644 t4s/portals/templates/portals/home.html
+ create mode 100644 t4s/portals/tests.py
+ create mode 100644 t4s/portals/urls.py
+ create mode 100644 t4s/portals/views.py
+Deleted branch feature/homepage (was 5b179bc).
+
+Summary of actions:
+- The feature branch 'feature/homepage' was merged into 'develop'
+- Feature branch 'feature/homepage' has been removed
+- You are now on branch 'develop'
+
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [develop]> git status
+# On branch develop
+nothing to commit, working directory clean
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [develop]> git push develop
+fatal: The current branch develop has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream develop develop
+
+C:\Users\lacheephyo\Documents\GitHub\t4sdev [develop]> git push origin develop
+Warning: Permanently added 'github.com,192.30.252.129' (RSA) to the list of know
+n hosts.
+Counting objects: 88, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (48/48), done.
+Writing objects: 100% (53/53), 10.92 KiB | 0 bytes/s, done.
+Total 53 (delta 28), reused 0 (delta 0)
+To git@github.com:text4strength/t4sdev.git
+ * [new branch]      develop -> develop

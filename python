@@ -1,0 +1,8 @@
+Check Modules
+==============
+install python-pip
+$ pip freeze
+
+OR
+
+>> help('modules') # this returned compilation errors for GTK and Nautilus

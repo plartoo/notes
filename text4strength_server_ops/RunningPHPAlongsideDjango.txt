@@ -1,0 +1,25 @@
+Final Apache config is as below:
+
+Alias /mywebsql /var/www/html/mywebsql
+
+<Directory /var/www/html/mywebsql>
+Order deny,allow
+Allow from all
+</Directory>
+
+WSGIPythonPath /home/URMC-SH/pthiha/dev/t4s
+
+<VirtualHost *:80>
+    ServerAdmin text4strength.dev@gmail.com
+    ServerName t4s.urmc-sh.rochester.edu
+    ErrorLog logs/t4s.urmc-sh.rochester.edu-error_log
+    CustomLog logs/t4s.urmc-sh.rochester.edu-access_log common
+    WSGIScriptAlias / /home/URMC-SH/pthiha/dev/t4s/t4s/wsgi.py
+</VirtualHost>
+
+
+======
+Some useful StackOverflow posts:
+http://stackoverflow.com/questions/1020390/how-do-i-run-django-and-php-together-on-one-apache-server
+http://stackoverflow.com/questions/6481233/django-mod-wsgi-and-php-as-virtual-hosts-on-same-apache-server-using-mamp
+http://stackoverflow.com/questions/1553165/multiple-django-sites-with-apache-mod-wsgi

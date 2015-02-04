@@ -1,0 +1,216 @@
+
+=====
+A possibly good reference for making Django work with Apache via mod_wsgi in Ubuntu
+http://blog.stannard.net.au/2010/12/11/installing-django-with-apache-and-mod_wsgi-on-ubuntu-10-04/
+
+Copied from HTML:
+Installing Django with Apache and mod_wsgi on Ubuntu 10.04
+By Kevan Stannard | Published: December 11, 2010
+
+Step by step instructions for installing Django with Apache and mod_wsgi on Ubuntu 10.04.
+
+PART 1 – Prepare the server
+
+Update the server
+
+> sudo apt-get update
+> sudo apt-get upgrade
+
+Install Apache and mod_wsgi
+
+> sudo apt-get install apache2 libapache2-mod-wsgi
+
+Install setup tools and pip
+
+> sudo apt-get install python-setuptools
+> sudo apt-get install python-pip
+
+Install Django
+
+> sudo pip install django
+
+Create a folder for storing our sites
+
+I’ll be placing our sites in the /srv/www directory. The /srv directory should already exist so we just need to create the /www directory
+
+> sudo mkdir /srv/www
+
+PART 2 – Add host entries for testing
+
+We will set up two domains for testing the configuration
+- one for testing that WSGI is working, and
+- one for testing that Django is working.
+
+My test virtual machine’s IP address is 172.16.52.130 so I’ll set up the following in my local hosts file (not on the server)
+
+> sudo nano /etc/hosts
+
+And add the following
+
+172.16.52.130    djangoserver
+172.16.52.130    wsgi.djangoserver
+172.16.52.130    hello.djangoserver
+
+PART 3 – Test WSGI is working
+
+Create our wsgi test site content
+
+> sudo mkdir /srv/www/wsgi
+> sudo nano /srv/www/wsgi/app.wsgi
+
+And add the content
+
+def application(environ, start_response):
+    status = '200 OK'
+    output = 'Hello World!'
+ 
+    response_headers = [('Content-type', 'text/plain'),
+                        ('Content-Length', str(len(output)))]
+    start_response(status, response_headers)
+ 
+    return [output]
+
+Create a new apache site
+
+> sudo nano /etc/apache2/sites-available/wsgi
+
+And add the content
+
+<VirtualHost *:80>
+ 
+    ServerName wsgi.djangoserver
+    DocumentRoot /srv/www/wsgi
+ 
+    <Directory /srv/www/wsgi>
+        Order allow,deny
+        Allow from all
+    </Directory>
+ 
+    WSGIScriptAlias / /srv/www/wsgi/app.wsgi
+ 
+</VirtualHost>
+
+And activate the site
+
+> sudo a2ensite wsgi
+> sudo /etc/init.d/apache2 reload
+
+Then open your web browser and browse to
+
+http://wsgi.djangoserver
+
+You should see a ‘Hello World!’ message
+PART 4 – Test Django is working
+
+Create a new Django site
+
+> cd /srv/www
+> sudo django-admin.py startproject hello
+
+Create a wsgi file for the site
+
+> sudo mkdir /srv/www/hello/apache
+> sudo nano /srv/www/hello/apache/django.wsgi
+
+And add the content
+
+import os
+import sys
+ 
+path = '/srv/www'
+if path not in sys.path:
+    sys.path.insert(0, '/srv/www')
+ 
+os.environ['DJANGO_SETTINGS_MODULE'] = 'hello.settings'
+ 
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
+
+Create a new apache site
+
+> sudo nano /etc/apache2/sites-available/hello
+
+And add the content
+
+<VirtualHost *:80>
+ 
+    ServerName hello.djangoserver
+    DocumentRoot /srv/www/hello
+ 
+    <Directory /srv/www/hello>
+        Order allow,deny
+        Allow from all
+    </Directory>
+ 
+    WSGIDaemonProcess hello.djangoserver processes=2 threads=15 display-name=%{GROUP}
+    WSGIProcessGroup hello.djangoserver
+ 
+    WSGIScriptAlias / /srv/www/hello/apache/django.wsgi
+ 
+</VirtualHost>
+
+And activate the site
+
+> sudo a2ensite hello
+> sudo /etc/init.d/apache2 reload
+
+Then open your web browser and browse to
+
+http://hello.djangoserver
+
+You should see the Django default installation message.
+Notes
+
+NOTE 1 – Running in daemon mode
+
+Our test Django site is configured to run in daemon mode – because of these two lines:
+
+WSGIDaemonProcess hello.djangoserver processes=2 threads=15 display-name=%{GROUP}
+WSGIProcessGroup hello.djangoserver
+
+So if we modify the code then rather than restarting apache we can just touch the wsgi file and the changes will be picked up:
+
+> sudo touch /srv/www/hello/apache/django.wsgi
+
+NOTE 2 – Specify the application module name
+
+It appears to be a good idea to specify the application module when specifying the DJANGO_SETTINGS_MODULE. So rather than writing this:
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
+We should write this:
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'hello.settings'
+
+Useful Commands
+
+Error log file
+
+If you get errors, check the apache log file
+
+> tail /var/log/apache2/error.log
+
+Test using development mode
+
+If your app does not seem to be working using wsgi, then check if it is working via the development server.
+
+> cd /srv/www/hello
+> python manage.py runserver 0:8080
+
+The in your web browser go to
+
+http://hello.djangoserver:8080
+
+References
+
+An improved WSGI script for use with Django.
+http://blog.dscpl.com.au/2010/03/improved-wsgi-script-for-use-with.html
+
+Modwsgi – Integration With Django
+http://code.google.com/p/modwsgi/wiki/IntegrationWithDjango
+
+How do I stop getting ImportError: Could not import settings ‘mofin.settings’ when using django with wsgi?
+http://stackoverflow.com/questions/1411417/how-do-i-stop-getting-importerror-could-not-import-settings-mofin-settings-whe
+
+Configuration problems with django and mod_wsgi
+http://stackoverflow.com/questions/2587251/configuration-problems-with-django-and-mod-wsgi

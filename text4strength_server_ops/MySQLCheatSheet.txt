@@ -1,0 +1,52 @@
+MySQL create new user accounts and other basic set up 
+======================================================
+[REF: http://www.cs.wcupa.edu/~rkline/index/mysql-lin.html]
+The following sequence of commands are meant to create some basic setup features and show the effects (highlighted ones most important): There are a number of repeated commands which can easily be accessed by using the "up arrow" key.
+$ mysql -u root
+mysql> show databases;
+mysql> create database test;                         (it may already exist)
+mysql> show databases;
+mysql> select user,host,password from mysql.user;
+mysql> create user guest@localhost;                  (it may already exist)
+mysql> select user,host,password from mysql.user;
+mysql> select user,host from mysql.db;
+mysql> grant all on test.* to guest@localhost;
+mysql> select user,host from mysql.db;
+mysql> quit
+mysql> drop database <db_name>
+# change password
+mysql> SET PASSWORD FOR 'user-name-here'@'hostname-name-here' = PASSWORD('new-password-here');
+
+# show connection parameters port host etc
+mysql> show full processlist;
+mysql> show variables;
+
+Setting password for 'root' account:
+$ mysqladmin -u root password NEWPASSWORD
+
+Then test:
+[pthiha@t4s ~]$ mysql -u root -p'PASSWORD' -e 'show databases;'
+
+Setting password for 't4s' account:
+mysql> set password for 't4sdev'@'localhost' = password('DesiredPasswordHere');
+Query OK, 0 rows affected (0.00 sec)
+
+Then, test:
+[pthiha@t4s ~]$ mysql -u t4sdev -p
+Enter password:
+
+If want to change above user's password:
+mysql> update user set password=PASSWORD("NEWPASSWORD") where User='nixcraft';
+
+
+
+Download "mywebsql" from 
+http://mywebsql.net/
+
+Unzip the file by:
+sudo unzip mywebsql-3.3.zip
+
+Test which port MySQL is running:
+[pthiha@t4s mywebsql]$ sudo netstat -lnp | grep mysql
+
+

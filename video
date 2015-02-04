@@ -1,0 +1,6 @@
+Use "mencoder"
+==============
+sudo apt-get install mencoder
+
+mencoder <source.ogv> -o <destination.avi> -oac mp3lame -lameopts fast:preset=standard -ovc lavc -lavcopts vcodec=mpeg4:vbitrate=4000
+

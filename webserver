@@ -1,0 +1,25 @@
+Which Web Server is running?
+=============================
+telnet ip.of.host 80
+*If that works you should get something like this:
+Trying 192.168.0.3....
+Connected to 192.168.0.3.
+Escape character is '^]'.
+*You'll be at a blank line, now type this and hit enter twice:
+GET / HTTP/1.1
+
+
+APACHE restart
+===============
+    Su to root.
+    Run the apache control program:
+    apachectl graceful
+    You can also run the apache control program in this way:
+    apachectl restart
+
+Tips:
+
+    graceful reloads the configuration files and gracefully restart. Any current connections are allowed to complete.
+    restart reloads the configuration files and restarts. Any current connections are terminated immediately.
+
+

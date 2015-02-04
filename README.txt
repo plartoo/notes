@@ -1,0 +1,1 @@
+Miscellaneous notes taken on different software libraries, tools and useful -nix scripts/commands.

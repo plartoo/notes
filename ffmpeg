@@ -1,0 +1,13 @@
+mpg to ogg
+===========
+for fic in "*.mp3" ; do
+ffmpeg -i "${fic}" "${fic%.mp3}.ogg"
+done
+
+image resize
+=============
+ffmpeg -i DATA/%d.jpg -s 320x240 DATA2/%d.jpg
+
+
+
+

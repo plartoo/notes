@@ -1,0 +1,31 @@
+Useful JetBrains IDE shorcuts
+=============================
+ctrl + shift + alt + insert (create scratch file)
+ctrl + W (extend selection; add shift to unselect)
+
+ctrl + E (show most recent files; easy to go back and forth between files)
+ctrl + shift + E (show most recently active code locations)
+ctrl + Tab (switch between opened tabs)
+alt + shift + arrow left/right (switch between last/next edited location)
+ctrl + G  (jump to specific line)
+
+ctrl + shift + N (search in file names)
+ctrl + shift + F (search in all files)
+ctrl + F (search in current file)
+ctrl + R (or ctrl + shift + R) search and replace
+
+ctrl + Y (delete)
+ctrl + D (duplicate)
+alt + shift + arrow up/down (shift line up and down)
+
+F2 (jump to next IDE suggestion) 
+alt + enter (when there's a suggestion from IDE, it will show)
+shift + F6 (rename a variable)
+
+ctrl + shift + alt + T (show possible refactorings)
+ctrl + alt + L (reformat selected code)
+alt + insert (generate getters/setters)
+
+
+Source: https://www.markusdosch.com/2020/04/my-favorite-shortcuts-for-jetbrains-ides/
+

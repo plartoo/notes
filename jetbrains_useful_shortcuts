@@ -26,6 +26,12 @@ ctrl + shift + alt + T (show possible refactorings)
 ctrl + alt + L (reformat selected code)
 alt + insert (generate getters/setters)
 
+Jetbrains' old font before their Jetbrain Mono font's arrival:
+public final static String WINDOWS_DEFAULT_FONT_FAMILY  = "Consolas";
+public final static String LINUX_DEFAULT_FONT_FAMILY    = "DejaVu Sans Mono";
+public final static String FALLBACK_FONT_FAMILY         = "Monospaced";
+public final static String MAC_OS_DEFAULT_FONT_FAMILY   = "Menlo";
+
 
 Source: https://www.markusdosch.com/2020/04/my-favorite-shortcuts-for-jetbrains-ides/
 

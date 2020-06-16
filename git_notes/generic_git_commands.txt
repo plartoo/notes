@@ -73,3 +73,55 @@ Quick steps to add project directory to git repo (assuming ssh stuff are taken c
 7. git remote add origin git@github.com:account_name/xxxxxxx.git
 8. git push -u origin main
 9. (Optional) Make changes in the code, commit and then do #8 to commit and see if things work properly
+
+
+========================================================
+To add to .bashrc for showing git branch at shell prompt
+function parse_git_branch () {
+       git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+RED="\[\033[0;31m\]"
+YELLOW="\[\033[0;33m\]"
+GREEN="\[\033[0;32m\]"
+NO_COLOUR="\[\033[0m\]"
+
+PS1="$GREEN\u@machine$NO_COLOUR:\w$YELLOW\$(parse_git_branch)$NO_COLOUR\$ "
+
+
+==============================
+To remove gitignore directory
+add folder/directory in ".gitignore"
+$ git rm -r --cached <folder>
+Changing your Editor
+
+$ git config --global core.editor emacs
+
+Adding Aliases
+
+$ git config --global alias.last 'cat-file commit HEAD'
+
+$ git last
+tree c85fbd1996b8e7e5eda1288b56042c0cdb91836b
+parent cdc9a0a28173b6ba4aca00eb34f5aabb39980735
+author Scott Chacon <schacon@gmail.com> 1220473867 -0700
+committer Scott Chacon <schacon@gmail.com> 1220473867 -0700
+
+fixed a weird formatting problem
+
+$ git cat-file commit HEAD
+tree c85fbd1996b8e7e5eda1288b56042c0cdb91836b
+parent cdc9a0a28173b6ba4aca00eb34f5aabb39980735
+author Scott Chacon <schacon@gmail.com> 1220473867 -0700
+committer Scott Chacon <schacon@gmail.com> 1220473867 -0700
+
+fixed a weird formatting problem
+
+Adding Color
+
+See all color.* options in the git config docs
+
+$ git config color.branch auto
+$ git config color.diff auto
+$ git config color.interactive auto
+$ git config color.status auto

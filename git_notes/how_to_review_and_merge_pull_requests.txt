@@ -1,0 +1,14 @@
+The following steps are for source repo owner (e.g., plartoo) to review and merge the pull requests.
+From the source repo owner's (plartoo's) perspective, she can review the pull request like below.
+REF: https://web.archive.org/web/20200610211303/https://dev.acquia.com/blog/getting-started-collaborative-development-git
+> git remote add tittetoo https://github.com/tittetoo/others.git # add a remote for tittetoo's forked repo
+> git remote -v # check to make sure the remote is properly added above
+> git fetch tittetoo # pull latest code from tittetoo's repo (the one tittetoo has requested to pull and review)
+> git branch -a # see all local and remote brnaches; plartoo should see tittetoo's south_africa branch that is requested for pull 
+> git checkout -b review_tittetoo tittetoo/south_africa # check out tittetoo's south_africa branch to a new branch for review
+> git diff main review_tittetoo # see what tittetoo has changed
+> git log -1 -p (or -2, -3, however many you need to see the commit messages that tittetoo has done)
+# review code and if you like it, merge that to your (plartoo's) main branch
+> git checkout main
+> git merge review_tittetoo
+> git branch -D review_tittetoo # delete the review branch now that we have merged it to the main branch

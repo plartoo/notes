@@ -1,0 +1,59 @@
+If you have more than one Github accounts and you want to use both of them in your computer, read the following blog:
+https://web.archive.org/web/20200610210659/https://www.freecodecamp.org/news/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca/
+
+The general idea is to 
+1. generate separate SSH keys--one for each github account (see REFs below on Github on how to generate new SSH keys and embed them in your Github account) 
+2. In 'C:\Users\<username>\.ssh\config' file, link each SSH (RSA) key files with each of your github accounts.
+3. In '[path_to_local_folder_of_the_git_repo_you_want_to_push_code_from]\.git\config', make sure that the name and email are accurate to that of your account. 
+In addition, make sure that the url of remote "origin" matches that defined in '~.\ssh\config' file.
+
+===========
+Example 'C:\Users\<username>\.ssh\config' file:
+# Personal account, - the default config
+Host github.com
+   HostName github.com
+   User git
+   IdentityFile ~/.ssh/id_rsa
+
+# Work account-1
+Host tootp.github.com
+   HostName github.com
+   User git
+   IdentityFile ~/.ssh/id_rsa_tootp_github_accnt
+
+# Account-2
+Host github.com-tittetoo
+   HostName github.com
+   User git
+   IdentityFile ~/.ssh/id_rsa_tittetoo_github_accnt
+
+===========
+Example '[path_to_local_folder_of_the_git_repo_you_want_to_push_code_from]\.git\config'
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[submodule]
+	active = .
+[remote "origin"]
+	url = git@github.com-tittetoo:tittetoo/others.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+[remote "upstream"]
+	url = https://github.com/plartoo/others.git
+	fetch = +refs/heads/*:refs/remotes/upstream/*
+[user]
+	name = tittetoo
+	email = plartooo@gmail.com
+
+===========
+REFs:
+https://github.com/settings/keys
+https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account
+https://www.freecodecamp.org/news/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca/

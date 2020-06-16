@@ -1,0 +1,18 @@
+Note on how to do Git rebase
+If you want to rebase the code you wrote to your repo's (tittetoo's) main branch, you can do that by following the , but that means, your copy of the repo will now be different from plartoo's repo.
+> git checkout main # check out your main branch
+> git fetch plartoo # get latest from plartoo's main branch
+> git branch -va # now check to see where git temporarily stored the latest code from plartoo's main branch
+* main                        f8ad439 Added a new mapping and modified comment related to South Africa processing.
+  south_africa                54716d9 Merge remote-tracking branch 'remotes/plartoo/main' into south_africa
+  remotes/origin/HEAD         -> origin/main
+  remotes/origin/main         f8ad439 Added a new mapping and modified comment related to South Africa processing.
+  remotes/origin/south_africa 54716d9 Merge remote-tracking branch 'remotes/plartoo/main' into south_africa
+  remotes/plartoo/main        bc693f5 Just demoing Maicol and Jholman about git collab.
+  remotes/upstream/main       bc693f5 Just demoing Maicol and Jholman about git collab.
+> git branch # double-check to make sure you are on the 'main' branch
+* main
+> git rebase remotes/plartoo/main # now your local repo's main branch will be synced with the source repo's latest changes.
+REF that briefly explains the difference between rebase vs. merge: https://web.archive.org/web/20200616010811/https://medium.com/datadriveninvestor/git-rebase-vs-merge-cc5199edd77c
+Always do merge if possible. Rebase pollutes (rewrites) the history of 'main' branch and is is hard to undo. So do 'rebase' only with a lot of prior thoughts given to it.
+

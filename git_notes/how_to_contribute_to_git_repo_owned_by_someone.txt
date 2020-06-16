@@ -1,0 +1,80 @@
+Overview
+---------
+This guide will help learn how to contribute to other people's open-source code hosted on Github using Git and your own Github account.
+
+The general steps involved are:
+1) you (say your username is "tittetoo") wll fork and clone a Github repo owned by another person (say owned by username, "plartoo") into your Github repository.
+2) make some code development in the cloned repo on your computer locally
+3) then fetch from the source repo to see if the owner (plartoo) has done any udpate to his/her code
+4) if so, merge his/her changes to your local (cloned) repo and test with your local code changes to make sure everything is working
+5) then commit your local changes to your own local repo
+6) asked for pull request so that the owner of the source repo (plartoo) can review and maybe merge your changes to his/her repo
+
+
+Step-by-step instructions begin here:
+-------------------------------------
+First make sure you have installed Git [https://git-scm.com/downloads] and have a Github account.
+1. Now log in to your Github account (e.g., username: tittetoo).
+2. Then go to the repository that you want to contribute--e.g., this one: [https://github.com/plartoo/others]
+3. Click 'Fork'. This will copy the same repo in your Github account 'tittetoo'.
+4. Then clone that repo in 'tittetoo' by doing this in the commandline window:
+> git clone git@github.com:tittetoo/others.git
+
+5. First, check to see where your remotes are pointing to. Think of remotes as the repositories where you will pull from or push the code to.
+> git remote -v
+origin  git@github.com-tittetoo:tittetoo/others.git (fetch)
+origin  git@github.com-tittetoo:tittetoo/others.git (push)
+
+Notice that, the 'git remote -v' command above returns the results without plartoo (the source repo that you are trying to contribute to). 
+We need to add plartoo as a remote as below:
+> git remote add plartoo https://github.com/plartoo/others.git
+
+# after typing the command above, you should now see two lines starting with plartoo when you type 'git remote -v'
+> git remote -v
+origin  git@github.com-tittetoo:tittetoo/others.git (fetch)
+origin  git@github.com-tittetoo:tittetoo/others.git (push)
+plartoo        https://github.com/plartoo/others.git (fetch)
+plartoo        https://github.com/plartoo/others.git (push)
+
+Note: The above 5 steps only need to be carried out ONCE. Once you forked and cloned a repo, you only need to do the steps below instead.
+
+6. Now, just to make sure you have the latest code from the source repo (plartoo's repo), do this:
+> git branch # check to see which branch you are on
+*some_branch
+main
+
+# if you are not on 'main' branch as shown above, do this:
+> git checkout main
+> git branch
+*main
+some_branch
+
+Now let's pull from the source repo, so that your 'main' branch is synced with the latest from the source repo's 'main' branch.
+> git fetch plartoo # REF: https://stackoverflow.com/a/7244456 and https://web.archive.org/web/20200610210250/https://nearsoft.com/blog/how-to-synchronize-your-github-fork/
+
+7. Now, you can create a new branch to do your own code contribution. Let's create a new branch:
+> git branch south_africa 
+> git checkout south_africa
+(or just do 'git checkout -b south_africa')
+# do some coding
+> git add <files_that_you_changed/added>
+> git commit -m "Type a useful and detailed commit message for reviewer here."
+
+8. If you are satisfied with your code contribution, you are ready to submit a pull request.
+REF: https://web.archive.org/web/20200610205259/https://code.tutsplus.com/tutorials/how-to-collaborate-on-github--net-34267
+We can submit a pull request via Github. Log in to your account (tittetoo) on Github. Navigate to your forked repo:
+https://github.com/tittetoo/others
+There you should see something like what's shown in "git_repo_contribute_1.png" (note that the pull request shown is for the branch 'south_africa').
+Click on the 'Pull Request' or 'Compare & Pull Request' button. Then write messages for the source repo owner (plartoo).
+Once you clicked 'Submit', you'll see something like what's shown in "git_repo_contribute_2.png".
+
+That's it! Now the source repo owner (plartoo) will decide if s/he wants to merge your contribution or not.
+
+REFs:
+https://stackoverflow.com/a/19506355
+https://dev.acquia.com/blog/getting-started-collaborative-development-git
+https://code.tutsplus.com/tutorials/how-to-collaborate-on-github--net-34267
+
+
+
+
